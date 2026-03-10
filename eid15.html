@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eid Mubarak - Creative Science Club</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Segoe UI, sans-serif;
+background:linear-gradient(#87CEEB,#ffffff);
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+/* Islamic pattern */
+
+body:before{
+content:'';
+position:absolute;
+width:100%;
+height:100%;
+background-image:
+radial-gradient(circle,rgba(255,215,0,.18) 2px,transparent 2px);
+background-size:70px 70px;
+pointer-events:none;
+}
+
+/* stars */
+
+.star{
+position:absolute;
+width:3px;
+height:3px;
+background:white;
+border-radius:50%;
+animation:twinkle 2s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:.3}
+to{opacity:1}
+}
+
+/* input box */
+
+.inputBox{
+text-align:center;
+background:white;
+padding:40px;
+border-radius:18px;
+box-shadow:0 20px 45px rgba(0,0,0,.18);
+z-index:2;
+}
+
+input{
+padding:12px;
+border-radius:8px;
+border:1px solid #ccc;
+width:230px;
+font-size:16px;
+}
+
+button{
+margin-top:12px;
+padding:10px 22px;
+border:none;
+border-radius:8px;
+background:#1c6ea4;
+color:white;
+font-size:16px;
+cursor:pointer;
+transition:.2s;
+}
+
+button:hover{
+background:#155a86;
+}
+
+/* card */
+
+.card{
+display:none;
+text-align:center;
+background:linear-gradient(180deg,#ffffff,#f9fbff);
+padding:50px;
+border-radius:22px;
+max-width:540px;
+box-shadow:
+0 25px 60px rgba(0,0,0,.2),
+0 0 0 1px rgba(255,255,255,.4);
+z-index:2;
+}
+
+/* title */
+
+.title{
+font-size:42px;
+color:#1c6ea4;
+font-weight:700;
+letter-spacing:.5px;
+margin-bottom:12px;
+}
+
+/* message */
+
+.message{
+font-size:18px;
+line-height:1.9;
+max-width:430px;
+margin:auto;
+color:#444;
+margin-top:20px;
+}
+
+/* club text */
+
+.club{
+margin-top:28px;
+color:#1c6ea4;
+font-weight:600;
+font-size:18px;
+}
+
+/* fireworks */
+
+.firework{
+position:absolute;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+animation:explode 1.2s linear forwards;
+}
+
+@keyframes explode{
+0%{transform:scale(1);opacity:1}
+100%{transform:scale(15);opacity:0}
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- Input -->
+
+<div class="inputBox" id="inputBox">
+
+<h2>Enter Your Name</h2>
+
+<input type="text" id="name" placeholder="Your name">
+
+<br>
+
+<button onclick="showCard()">Generate Eid Card</button>
+
+</div>
+
+<!-- Card -->
+
+<div class="card" id="card">
+
+<div class="title">Eid Mubarak 🌙</div>
+
+<div class="message" id="msg"></div>
+
+<div class="club">Creative Science Club</div>
+
+</div>
+
+<script>
+
+/* stars */
+
+for(let i=0;i<80;i++){
+let star=document.createElement("div")
+star.className="star"
+star.style.left=Math.random()*100+"vw"
+star.style.top=Math.random()*100+"vh"
+document.body.appendChild(star)
+}
+
+/* fireworks */
+
+setInterval(()=>{
+let fire=document.createElement("div")
+fire.className="firework"
+fire.style.left=Math.random()*100+"vw"
+fire.style.top=Math.random()*60+"vh"
+document.body.appendChild(fire)
+setTimeout(()=>{fire.remove()},1200)
+},900)
+
+/* show card */
+
+function showCard(){
+
+let name=document.getElementById("name").value
+
+if(name===""){
+alert("Please enter your name")
+return
+}
+
+document.getElementById("inputBox").style.display="none"
+document.getElementById("card").style.display="block"
+
+document.getElementById("msg").innerHTML =
+"Eid Mubarak <b>"+name+"</b>!<br><br>\
+Wishing you joy, peace, and happiness on this special occasion of Eid.<br>\
+Let this beautiful day bring new hope, success, and bright moments to your life.<br><br>\
+Warm wishes from <b>Creative Science Club</b>."
+
+}
+
+</script>
+
+</body>
+</html>
